@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raveesha Rathnayake - Cybersecurity Professional</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #0A192F;
+            --secondary: #64FFDA;
+            --text-light: #CCD6F6;
+            --text-dark: #8892B0;
+            --bg-light: #112240;
+            --bg-dark: #0A192F;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 50px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 50px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+        
+        /* Main Content */
+        main {
+            padding-top: 100px;
+        }
+        
+        section {
+            padding: 80px 120px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 120px;
+        }
+        
+        .hero-greeting {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .hero-name {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .hero-headline {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+        
+        .hero-desc {
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            background: transparent;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+        
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .skills-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .skills-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .about-image {
+            position: relative;
+            max-width: 300px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: -15px;
+            bottom: -15px;
+            border: 2px solid var(--secondary);
+            border-radius: 5px;
+            z-index: -1;
+        }
+        
+        .about-image:hover img {
+            transform: translateY(-5px);
+        }
+        
+        /* Education */
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .education-item {
+            padding: 20px;
+            background-color: var(--bg-light);
+            border-radius: 5px;
+            margin-bottom: 30px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .education-date {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .education-degree {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .education-institution {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .education-desc {
+            color: var(--text-dark);
+        }
+        
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-card {
+            background-color: var(--bg-light);
+            border-radius: 5px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .folder-icon {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-links a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-desc {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+        
+        /* Certifications */
+        .certifications-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .certification-card {
+            background-color: var(--bg-light);
+            border-radius: 5px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .cert-icon {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .cert-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .cert-issuer {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        /* Contact */
+        .contact-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+        
+        .contact-intro h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        
+        .contact-intro p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-light);
+            border: 1px solid var(--text-dark);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            background: transparent;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            section {
+                padding: 80px 80px;
+            }
+            
+            #hero {
+                padding-left: 80px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-image {
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 30px;
+            }
+            
+            section {
+                padding: 60px 30px;
+            }
+            
+            #hero {
+                padding-left: 30px;
+            }
+            
+            .hero-name {
+                font-size: 3rem;
+            }
+            
+            .hero-headline {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 250px;
+                height: 100vh;
+                background-color: var(--bg-light);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                transition: right 0.3s ease;
+                padding: 50px 0;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .projects-grid, 
+            .certifications-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: 2.5rem;
+            }
+            
+            .hero-headline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">R</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <p class="hero-greeting">Hi, my name is</p>
+            <h1 class="hero-name">Raveesha Rathnayake</h1>
+            <h2 class="hero-headline">I'm a Cybersecurity Professional</h2>
+            <p class="hero-desc">
+                I'm a dedicated Cyber Security student at Deakin University with a passion for securing digital systems and networks. 
+                Currently focusing on developing expertise in network security, ethical hacking, vulnerability assessment, secure coding, 
+                digital forensics, and emerging cybersecurity trends.
+            </p>
+            <a href="#contact" class="cta-btn">Get In Touch</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I am a cybersecurity enthusiast currently pursuing a Bachelor of Cyber Security at Deakin University in Australia. 
+                        With a strong foundation in Information Technology from my previous studies at Sri Lanka Institute of Information Technology, 
+                        I have developed a comprehensive understanding of both the technical and strategic aspects of cybersecurity.
+                    </p>
+                    <p>
+                        My academic journey and project experiences have equipped me with skills in network security, ethical hacking, 
+                        vulnerability assessment, and secure coding practices. I am passionate about protecting digital assets and creating 
+                        secure systems that can withstand evolving cyber threats.
+                    </p>
+                    <p>Here are some of the key technologies I've been working with:</p>
+                    <ul class="skills-list">
+                        <li>Microsoft Copilot</li>
+                        <li>Incident Response</li>
+                        <li>Amazon Web Services (AWS)</li>
+                        <li>Threat & Vulnerability Management</li>
+                        <li>Data-driven Decision Making</li>
+                        <li>Information Security Awareness</li>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>Java</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/300/300" alt="Raveesha Rathnayake">
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <p class="education-date">2024 Feb - Current</p>
+                    <h3 class="education-degree">Bachelor of Cyber Security</h3>
+                    <p class="education-institution">Deakin University - Australia</p>
+                    <p class="education-desc">
+                        Currently pursuing a Bachelor of Cyber Security, developing expertise in network security, 
+                        ethical hacking, vulnerability assessment, secure coding, digital forensics, and emerging 
+                        trends in cybersecurity.
+                    </p>
+                </div>
+                <div class="education-item">
+                    <p class="education-date">2022 Sep - 2023 Dec</p>
+                    <h3 class="education-degree">Bachelor of Information Technology</h3>
+                    <p class="education-institution">Sri Lanka Institute of Information Technology</p>
+                    <p class="education-desc">
+                        Completed the first academic year of the Bachelor of Information Technology program, 
+                        gaining foundational knowledge in software development, database management, computer networks, 
+                        and IT systems.
+                    </p>
+                </div>
+                <div class="education-item">
+                    <p class="education-date">2021 - 2022</p>
+                    <h3 class="education-degree">G.C.E Advanced Level - Physical Science Stream</h3>
+                    <p class="education-institution">St. Thomas' Girls' High School, Matara, Sri Lanka</p>
+                    <p class="education-desc">
+                        Studied Chemistry, Physics, and Combined Mathematics. Obtained 3 C's with a 0.8982 Z-score.
+                    </p>
+                </div>
+                <div class="education-item">
+                    <p class="education-date">2018</p>
+                    <h3 class="education-degree">G.C.E Ordinary Level</h3>
+                    <p class="education-institution">St. Thomas' Girls' High School, Matara, Sri Lanka</p>
+                    <p class="education-desc">
+                        Obtained 9 A's in the G.C.E. Ordinary Level examinations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-top">
+                        <div class="folder-icon">
+                            <i class="far fa-folder"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" title="External Link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Website Redesign Project</h3>
+                    <p class="project-desc">
+                        Designed a modern, user-friendly interface for Deakin University's website, ensuring accessibility and responsiveness.
+                        Created visually engaging layouts and navigation structures to enhance the user experience for students, staff, and faculty.
+                        Managed sprint planning using Trello and used Git version control for design iterations.
+                    </p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>UI Design</span>
+                        <span>Git</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-top">
+                        <div class="folder-icon">
+                            <i class="far fa-folder"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" title="External Link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Online Property Sales System</h3>
+                    <p class="project-desc">
+                        Developed and designed the "Book an Appointment," "FAQ," "User Report," and "Seller Registration" pages
+                        using HTML, CSS, and JavaScript. Ensured responsive design and user-friendly interfaces for seamless navigation
+                        while collaborating with team members to integrate frontend with backend functionalities.
+                    </p>
+                    <div class="project-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Web Development</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-top">
+                        <div class="folder-icon">
+                            <i class="far fa-folder"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" title="External Link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Online Help Desk System</h3>
+                    <p class="project-desc">
+                        Developed the feedback module of an online help desk system using Java. Implemented backend logic
+                        to process and store user feedback efficiently while ensuring secure handling of user input and data storage.
+                        Applied software development best practices and object-oriented programming principles.
+                    </p>
+                    <div class="project-tech">
+                        <span>Java</span>
+                        <span>OOP</span>
+                        <span>Backend Development</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-list">
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">Career Essentials in Cybersecurity</h3>
+                    <p class="cert-issuer">Microsoft and LinkedIn</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">Artificial Intelligence for Cybersecurity</h3>
+                    <p class="cert-issuer">LinkedIn</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">Cybersecurity Awareness: Cybersecurity Terminology</h3>
+                    <p class="cert-issuer">LinkedIn</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">Cybersecurity Foundations</h3>
+                    <p class="cert-issuer">National Association of State Boards of Accountancy (NASBA)</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">Delivering Data-Driven Decisions with AWS</h3>
+                    <p class="cert-issuer">LinkedIn</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">Microsoft Security Copilot</h3>
+                    <p class="cert-issuer">LinkedIn</p>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">The Cybersecurity Threat Landscape</h3>
+                    <p class="cert-issuer">LinkedIn</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="contact-intro">
+                <h2>Get In Touch</h2>
+                <p>
+                    I'm currently looking for new opportunities in the cybersecurity field. Whether you have a question or just want to say hi, 
+                    I'll do my best to get back to you!
+                </p>
+                <a href="mailto:raveeshachandeepanie@gmail.com" class="cta-btn">Say Hello</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="footer-text">Designed & Built by Raveesha Rathnayake</p>
+        <p class="footer-text">&copy; 2025 All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Add scrolled class to header when scrolling
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
